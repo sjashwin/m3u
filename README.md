@@ -8,22 +8,20 @@ and for listening to Internet radio.
 
 ## File Format
 
-<p>
 There is no specific formal specification for the M3U format; it is a de facto standard.
 An M3U file is a plain text file that specifies the location of one or more media files.
-The file saved with the "m3u" filename extension if the text is encoded in the local system's default non-Unicode endoding or with "m3u8" extension if the text is UTF-8 encoded. More information can be found [here](https://en.wikipedia.org/wiki/M3U "wikipedia").
-</p>
+The file saved with the "m3u" filename extension if the text is encoded in the local system's default non-Unicode endoding or with "m3u8" extension if the text is UTF-8 encoded. More information can be found [here](https://en.wikipedia.org/wiki/M3U "wikipedia")
 
-## Exntended M3U
+## Extended M3U
 <table>
-    <th>
+    <thead>
         <tr>
             <td>Directives</td>
             <td>Description</td>
-            <td>Exmaple</td>
+            <td>Example</td>
             <td>Function</td>
         </tr>
-    <th>
+    </thead>
     <tbody>
         <tr>
             <td>#EXTM3U</td>
