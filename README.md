@@ -10,9 +10,11 @@ and for listening to Internet radio.
 
 There is no specific formal specification for the M3U format; it is a de facto standard.
 An M3U file is a plain text file that specifies the location of one or more media files.
-The file saved with the "m3u" filename extension if the text is encoded in the local system's default non-Unicode endoding or with "m3u8" extension if the text is UTF-8 encoded. More information can be found [here](https://en.wikipedia.org/wiki/M3U "wikipedia")
+The file saved with the "m3u" filename extension if the text is encoded in the local system's default non-Unicode endoding or with "m3u8" extension if the text is UTF-8 encoded. More information can be found [here](https://en.wikipedia.org/wiki/M3U "wikipedia").
 
 ## Extended M3U
+
+These are the funtions supported and directives support in this python package.
 <table>
     <thead>
         <tr>
@@ -97,4 +99,152 @@ The file saved with the "m3u" filename extension if the text is encoded in the l
         </tr>
     </tbody>
 </table>
+
+## HLS M3U Extensions
+
+<table>
+    <thead>
+        <tr>
+            <td>Directive</td>
+            <td>Example</td>
+            <td>Description</td>
+            <td>Function</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>#EXT-X-START:</td>
+            <td>TIME-OFFSET=0</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-INDEPENDENT-SEGMENTS</td>
+            <td>toggle without parameters</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-PLAYLIST-TYPE:</td>
+            <td>VOD or EVENT</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-TARGETDURATION:</td>
+            <td>10</td>
+            <td>in seconds</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-VERSION:</td>
+            <td>4</td>
+            <td></td>
+            <td>version()</td>
+        </tr>
+        <tr>
+            <td>#EXT-X-MEDIA-SEQUENCE:</td>
+            <td>0</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-INDEPENEDNT-SEGMENTS</td>
+            <td>toggle without parameters</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-MEDIA</td>
+            <td>NAME="English", TYPE=AUDIO, GROUP-ID="audio-stereo-64", LANGUAGE="en", DEFAULT=YES, AUTOSELECT=YES, URI="english.m3u8"</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-STREAM-INF:</td>
+            <td>BANDWIDTH=1123000, CODESC="avc1.64000f,mp4a.40.2"</td>
+            <td>parameters have either one combined value or one per stream, separated by commas</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-BYTERANGE:</td>
+            <td>1024@256000</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-DISCONTINUITY</td>
+            <td>toggle without parameters</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-DISCONTINUITY-SEQUENCE:</td>
+            <td>2</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-KEY</td>
+            <td>METHOD=NONE</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-MAP:</td>
+            <td>URL=MediaInitializationSection</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-PROGRAM-DATE-TIME:</td>
+            <td>2010-02-19T14:54:23.031+08:00</td>
+            <td>ISO 8601 format</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-DATERANGE:</td>
+            <td>ID=foo</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-FRAMES-ONLY</td>
+            <td>i-frame toggle without parameters</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-SESSION-DATA:</td>
+            <td>DATA-ID=com.exmaple.movie.title</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-SESSION-KEY:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>#EXT-X-ENDLIST</td>
+            <td>end-of-list signal without parameters</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+## Getting Started
+
+It is as simple as:
+
+```python
+from m3u import Parser
+
+filepath="${filepath}/file.m3u8"
+p = Parser()
+print(p.version()) # 3.0.0
+print(p.playlist()) # VOD
+```
 
